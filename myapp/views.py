@@ -1,7 +1,7 @@
 import csv  # per export in csv
 import xlwt  # per export in xsl
 from openpyxl import Workbook  # per export in xslx
-from openpyxl.styles import Font, Alignment, Border, Side, PatternFill  # per lo stile delle celle
+from openpyxl.styles import Font, Alignment  # per lo stile delle celle
 from openpyxl.utils import get_column_letter  # per lavorare con le colonne
 from django.http import HttpResponse
 from .models import User
@@ -96,11 +96,10 @@ def export_users_xlsx(request):
 
     # Assegno il titolo ad ogni colonna
     for col_num, column_title in enumerate(columns, 1):
-        #imposto la larghezza della colonna
+        # imposto la larghezza della colonna
         column_letter = get_column_letter(col_num)
         column_dimensions = worksheet.column_dimensions[column_letter]
         column_dimensions.width = 40
-
 
         cell = worksheet.cell(row=row_num, column=col_num)
         cell.alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)

@@ -15,13 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from myapp.views import export_users_csv, index, export_users_xls
+from myapp.views import export_users_csv, index, export_users_xls, export_users_xlsx
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name = "home"),
+    path('', index, name="home"),
     path('export/csv/', export_users_csv, name='export_users_csv'),
     path('export/xls/', export_users_xls, name='export_users_xls'),
-
+    path('export/xlsx/', export_users_xlsx, name='export_users_xlsx'),
 
 ]
